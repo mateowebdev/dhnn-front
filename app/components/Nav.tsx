@@ -5,7 +5,7 @@ import NavItem from "./NavItem";
 
 export default function Nav() {
   return (
-    <nav className="h-24 flex items-center justify-center gap-10 border-2">
+    <nav className="hidden fixed bg-white w-full h-24 md:flex items-center justify-center gap-10 border-2">
       <Image src={logo} width={170} alt="logo" />
       <ul className="flex items-center h-full">
         <NavItem url={"/"} text={"Nosotros"}/>
