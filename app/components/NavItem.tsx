@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
 import Link from "next/link";
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation";
 
 type ItemProps = {
   url: string;
   text: string;
 };
 export default function NavItem({ url, text }: ItemProps) {
-    const pathname = usePathname()
-  
+  const pathname = usePathname();
+
   const selected = pathname === url;
 
   return (

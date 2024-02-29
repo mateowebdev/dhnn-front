@@ -1,11 +1,15 @@
-"use client";
+'use client';
 import { useState } from "react";
-
 import { FiArrowUpRight } from "react-icons/fi";
 import { FiArrowDownLeft } from "react-icons/fi";
+import { Noticia } from "../types/Noticia";
 
-export default function Hero() {
-  const [expanded, setExpanded] = useState(true);
+type heroProps = {
+  noticia: Noticia;
+}
+
+export default function Hero({noticia}:heroProps) {
+  const [expanded, setExpanded] = useState(false);
 
   const toggleVisibility = () => {
     setExpanded(!expanded);
@@ -14,20 +18,24 @@ export default function Hero() {
   return (
     <div
       style={{
-        backgroundImage: `url('/images/airport.jpg')`,
+        backgroundImage: `url('/images/${
+          noticia.attributes.imagenUrl || "plane.jpg"
+        }')`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       }}
-      className="w-full h-screen flex items-end"
+      className="w-full min-h-screen flex items-end"
     >
       <div className="bg-white w-[600px] p-8 sm:p-12 sm:pl-20 flex flex-col">
         <div className="flex">
           <div className="flex-1 flex flex-col gap-4">
             <h3 className="text-gray-500 uppercase font-medium text-sm">
-              Sub titulo
+              {noticia.attributes.subTitulo || "Sub titulo"}
             </h3>
-            <h2 className="font-bold text-2xl">Titulo de la noticia</h2>
+            <h2 className="font-bold text-2xl">
+              {noticia.attributes.titulo || "Lorem Ipsum"}
+            </h2>
           </div>
           <div className="hidden sm:block">
             {!expanded && (
@@ -48,8 +56,8 @@ export default function Hero() {
           <div className="flex flex-col sm:items-start gap-4">
             <div className="h-[1px] w-32 mt-4 bg-blue-700"></div>
             <p className=" text-gray-600">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-              nihil unde officiis a eos minima optio facilis sed iste quo.
+              {noticia.attributes.descripcion[0].children[0].text ||
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit."}
             </p>
             <button className="bg-blue-700 text-white p-4 font-medium text-sm rounded">
               Call to action

@@ -8,3 +8,7 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
